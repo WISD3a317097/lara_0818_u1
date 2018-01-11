@@ -60,6 +60,12 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="text-center">
+                            <p>其他登入方式</p>
+                            
+                            <a href="{{ route('social.redirect', ['provider' => 'google']) }}" class="btn btn-lg btn-success btn-block">Google</a>
+                            <a href="{{ route('social.redirect', ['provider' => 'github']) }}" class="btn btn-lg btn-primary btn-block">GitHUb</a>
+                        </div>
                     </form>
                 </div>
             </div>

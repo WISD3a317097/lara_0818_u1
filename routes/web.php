@@ -10,13 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\Http\Middleware\CheckAge;
+
 Route::get('/', function () {
     return view('welcome');
 })->middleware(CheckAge::class);
-Route::get('/2',function(){
+
+Route::get('/tracy',function(){
     throw new \Exception('Tracyworks!');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'login/social'],function(){
+    Route::get('{provider}/redirect', 'Auth\loginController@redirectToProvider')->name('social.redirect');
+    Route::get('{provider}/callback', 'Auth\loginController@handleProviderCallback')->name('social.callback');
+});
